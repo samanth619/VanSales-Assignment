@@ -65,10 +65,15 @@ app.use(authRoutes);
 
 app.use(errorController.get404);
 
+let port = process.env.PORT;
+if(port == null || port == "") {
+  port = 3000;
+}
+
 mongoose
   .connect(MONGODB_URI)
   .then(result => {
-    app.listen(3000);
+    app.listen(port);
   })
   .catch(err => {
     console.log(err);
