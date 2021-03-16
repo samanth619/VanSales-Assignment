@@ -142,8 +142,8 @@ exports.getProductPage = (req,res,next) =>{
           }
           const userId = product.userId;
           User.findById(userId)
-           .then(user=>{
-             const seller = user.username;
+           .then(sellerDoc=>{
+             const seller = sellerDoc.username;
              res.render('product-page',{
               pageTitle:'Product Detail',
               product : product,
